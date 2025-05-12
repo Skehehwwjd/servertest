@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=900, initial-scale=1.0" />
   <title>난이도 선택</title>
   <style>
+    
+    /* 중앙 정렬, 배경색 설정 */
     body {
       background: #fbfbff;
       min-height: 100vh;
@@ -15,6 +17,7 @@
       margin: 0;
     }
 
+    /* 크기, 배경, 그림자 등 */
     .level-select-container {
       position: relative;
       width: 900px;
@@ -30,7 +33,7 @@
       overflow: hidden;
     }
 
-    /* 나가기 버튼 (컨테이너 안, 왼쪽 위) */
+    /* 나가기 버튼 (호버 효과 넣음) */
     .exit-btn {
       position: absolute;
       top: 20px;
@@ -59,7 +62,7 @@
       filter: brightness(1.15) drop-shadow(0 2px 8px #a18fff55);
     }
 
-    /* 타이틀 이미지 */
+    /* 애니메이션 효과(움직이는) 적용된 타이틀 이미지 */
     .level-title-img {
       position: absolute;
       top: 34px;
@@ -108,7 +111,7 @@
       margin-top: 80px;
     }
 
-    /* 난이도 버튼 - 크기 키움 */
+    /* 난이도 버튼 (위치, 정렬 등) */
     .level-btn {
       background: #f3ebff;
       top: 20px;
@@ -133,8 +136,6 @@
       box-shadow: 0 10px 32px rgba(41, 27, 130, 0.15);
       background: #ede6ff;
     }
-
-    /* 버튼 안의 난이도 이미지 - 크기 키움 */
     .level-btn img {
       width: 300px;
       height: auto;
@@ -143,7 +144,7 @@
       display: block;
     }
 
-    /* 반응형 대응 */
+    /* 반응형 대응(어떤 기기에서도 보기 좋게) */
     @media (max-width: 700px) {
       .level-select-container {
         width: 98vw;
@@ -180,14 +181,16 @@
   </style>
 </head>
 <body>
+  <!-- 메인 UI 박스 -->
   <div class="level-select-container">
-    <!-- 나가기 버튼 (컨테이너 안, 왼쪽 위) -->
+    <!-- 나가기 버튼 -->
     <button class="exit-btn" id="exitBtn" title="나가기">
       <img src="img/exit.png" alt="나가기" />
     </button>
-    <!-- 타이틀 이미지 -->
+    <!-- 난이도 선택 이미지 -->
     <img src="img/select.png" class="level-title-img" alt="난이도 선택" />
     <img src="img/hand-arrow.png" alt="화살표" class="level-arrow" id="levelArrow" />
+    <!-- 세로 정렬된 난이도 버튼 그룹 -->
     <div class="level-btns">
       <button class="level-btn" data-index="0">
         <img src="img/easy.png" alt="초급(유치원)" />
@@ -200,13 +203,18 @@
       </button>
     </div>
   </div>
+
+
+
+  
   <script>
+    // 난이도 버튼, 화살표 가져옴
     const levelBtns = document.querySelectorAll('.level-btn');
     const arrow = document.getElementById('levelArrow');
 
+    // 마우스 올리면 보이고, 떼면 사라지도록
     levelBtns.forEach((btn) => {
       btn.addEventListener('mouseenter', () => {
-        // 40px 더 위로 올림
         arrow.style.top = (btn.offsetTop + btn.offsetHeight/2 - arrow.offsetHeight/2 - 40) + "px";
         arrow.style.display = 'block';
       });
